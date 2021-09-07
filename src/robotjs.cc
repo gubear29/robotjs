@@ -83,7 +83,6 @@ NAN_METHOD(dragMouse)
 	MMSignedPoint point;
 	point = MMSignedPointMake(x, y);
 	dragMouse(point, button);
-	microsleep(mouseDelay);
 
 	info.GetReturnValue().Set(Nan::New(1));
 }
@@ -108,7 +107,6 @@ NAN_METHOD(moveMouse)
 	MMSignedPoint point;
 	point = MMSignedPointMake(x, y);
 	moveMouse(point);
-	microsleep(mouseDelay);
 
 	info.GetReturnValue().Set(Nan::New(1));
 }
@@ -133,7 +131,6 @@ NAN_METHOD(moveMouseSmooth)
 	{
 		smoothlyMoveMouse(point, 3.0);
 	}
-	microsleep(mouseDelay);
 
 	info.GetReturnValue().Set(Nan::New(1));
 }
@@ -188,7 +185,6 @@ NAN_METHOD(mouseClick)
 		doubleClick(button);
 	}
 
-	microsleep(mouseDelay);
 
 	info.GetReturnValue().Set(Nan::New(1));
 }
@@ -240,7 +236,6 @@ NAN_METHOD(mouseToggle)
 	}
 
 	toggleMouse(down, button);
-	microsleep(mouseDelay);
 
 	info.GetReturnValue().Set(Nan::New(1));
 }
@@ -268,7 +263,7 @@ NAN_METHOD(scrollMouse)
 	int y = Nan::To<int32_t>(info[1]).FromJust();
 
 	scrollMouse(x, y);
-	microsleep(mouseDelay);
+
 
 	info.GetReturnValue().Set(Nan::New(1));
 }
@@ -515,9 +510,7 @@ NAN_METHOD(keyTap)
 			break;
 		default:
 			toggleKeyCode(key, true, flags);
-			microsleep(keyboardDelay);
 			toggleKeyCode(key, false, flags);
-			microsleep(keyboardDelay);
 			break;
 	}
 
@@ -593,7 +586,6 @@ NAN_METHOD(keyToggle)
 			break;
 		default:
 			toggleKeyCode(key, down, flags);
-			microsleep(keyboardDelay);
 	}
 
 	info.GetReturnValue().Set(Nan::New(1));
