@@ -53,7 +53,8 @@ static io_connect_t _getAuxiliaryKeyDriver(void)
 #if defined(IS_WINDOWS)
 void win32KeyEvent(int key, MMKeyFlags flags)
 {
-	int scan = MapVirtualKey(key & 0xff, MAPVK_VK_TO_VSC);
+	// int scan = MapVirtualKey(key & 0xff, MAPVK_VK_TO_VSC);
+	int scan = MapVirtualKey(key, MAPVK_VK_TO_VSC);
 
 	/* Set the scan code for extended keys */
 	switch (key)
@@ -97,9 +98,9 @@ void win32KeyEvent(int key, MMKeyFlags flags)
 	}
 
 	/* Set the scan code for keyup */
-	if ( flags & KEYEVENTF_KEYUP ) {
-		scan |= 0x80;
-	}
+	// if ( flags & KEYEVENTF_KEYUP ) {
+	// 	scan |= 0x80;
+	// }
 
 	flags |= KEYEVENTF_SCANCODE;
 
@@ -110,7 +111,7 @@ void win32KeyEvent(int key, MMKeyFlags flags)
 	keyboardInput.ki.dwFlags = flags;
 	keyboardInput.ki.time = 0;
 	keyboardInput.ki.dwExtraInfo = 0;
-	SendInput(1, &keyboardInput, sizeof(keyboardInput));
+	SendInput(INPUT_KEYBOARD, &keyboardInput, sizeof(keyboardInput));
 }
 #endif
 

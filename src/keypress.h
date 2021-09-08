@@ -11,7 +11,7 @@
 	#include <stdbool.h>
 #endif
 #ifdef __cplusplus
-extern "C" 
+extern "C"
 {
 #endif
 #if defined(IS_MACOSX)
