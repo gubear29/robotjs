@@ -111,7 +111,7 @@ void win32KeyEvent(int key, MMKeyFlags flags)
 	keyboardInput.ki.dwFlags = flags;
 	keyboardInput.ki.time = 0;
 	keyboardInput.ki.dwExtraInfo = 0;
-	SendInput(INPUT_KEYBOARD, &keyboardInput, sizeof(keyboardInput));
+	SendInput(1, &keyboardInput, sizeof(keyboardInput));
 }
 #endif
 
@@ -142,7 +142,7 @@ void toggleKeyCode(MMKeyCode code, const bool down, MMKeyFlags flags)
 	}
 #elif defined(IS_WINDOWS)
 	const DWORD dwFlags = down ? 0 : KEYEVENTF_KEYUP;
-	win32KeyEvent(code, dwFlags)
+	win32KeyEvent(code, dwFlags);
 
 
 	if (down) {
