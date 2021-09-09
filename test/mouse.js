@@ -14,11 +14,11 @@ describe('Mouse', () => {
 
   it('Move the mouse.', function()
   {
-    lastKnownPos = robot.moveMouse(0, 0);
-    expect(robot.moveMouse(100, 100) === 1).toBeTruthy();
     currentPos = robot.getMousePos();
-    expect(currentPos.x === 100).toBeTruthy();
-    expect(currentPos.y === 100).toBeTruthy();
+    expect(robot.moveMouse(100, 100) === 1).toBeTruthy();
+    nextPos = robot.getMousePos();
+    expect(currentPos.x === nextPos.x - 100).toBeTruthy();
+    expect(currentPos.y === nextPos.y - 100).toBeTruthy();
 
     expect(function()
     {

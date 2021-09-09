@@ -156,7 +156,6 @@ void toggleKeyCode(MMKeyCode code, const bool down, MMKeyFlags flags)
 	} else {
 		/* Reverse order for key up */
 		// WIN32_KEY_EVENT_WAIT(code, dwFlags);
-
 		/* Parse modifier keys. */
 		// if (flags & MOD_META) win32KeyEvent(K_META, dwFlags);
 		// if (flags & MOD_ALT) win32KeyEvent(K_ALT, dwFlags);
