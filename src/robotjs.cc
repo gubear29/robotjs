@@ -94,22 +94,7 @@ NAN_METHOD(updateScreenMetrics)
 	info.GetReturnValue().Set(Nan::New(1));
 }
 
-NAN_METHOD(moveMouse)
-{
-	if (info.Length() != 2)
-	{
-		return Nan::ThrowError("Invalid number of arguments.");
-	}
 
-	int32_t x = Nan::To<int32_t>(info[0]).FromJust();
-	int32_t y = Nan::To<int32_t>(info[1]).FromJust();
-
-	MMSignedPoint point;
-	point = MMSignedPointMake(x, y);
-	moveMouse(point);
-
-	info.GetReturnValue().Set(Nan::New(1));
-}
 
 NAN_METHOD(moveMouseSmooth)
 {
