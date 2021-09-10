@@ -916,7 +916,7 @@ NAN_MODULE_INIT(InitAll)
 		Nan::GetFunction(Nan::New<FunctionTemplate>(getColor)).ToLocalChecked());
 
 	Nan::Set(target, Nan::New("getXDisplayName").ToLocalChecked(),
-		Nan::GetFunction(Nan::New<FunctionTemplate>(getXDisplayName)).ToLocalChecked());
+		Nan::GetFunction(Nan::New<FunctionTemplate>(getXDisplayName)).ToLocalChecked())
 
 	Nan::Set(target, Nan::New("setXDisplayName").ToLocalChecked(),
 		Nan::GetFunction(Nan::New<FunctionTemplate>(setXDisplayName)).ToLocalChecked());
