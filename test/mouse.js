@@ -14,11 +14,11 @@ describe('Mouse', () => {
 
   it('Move the mouse.', function()
   {
-    currentPos = robot.getMousePos();
+    lastKnownPos = robot.moveMouse(0, 0);
     expect(robot.moveMouse(100, 100) === 1).toBeTruthy();
-    nextPos = robot.getMousePos();
-    expect(currentPos.x === nextPos.x - 100).toBeTruthy();
-    expect(currentPos.y === nextPos.y - 100).toBeTruthy();
+    currentPos = robot.getMousePos();
+    expect(currentPos.x === 100).toBeTruthy();
+    expect(currentPos.y === 100).toBeTruthy();
 
     expect(function()
     {
@@ -31,6 +31,28 @@ describe('Mouse', () => {
     }).toThrowError(/Invalid number/);
 
     expect(robot.moveMouse("0", "0") === 1).toBeTruthy();
+
+  });
+
+  it('Move the mouse smoothly.', function()
+  {
+    lastKnownPos = robot.moveMouseSmooth(0, 0);
+    expect(robot.moveMouseSmooth(100, 100) === 1).toBeTruthy();
+    currentPos = robot.getMousePos();
+    expect(currentPos.x).toEqual(100);
+    expect(currentPos.y).toEqual(100);
+
+    expect(function()
+    {
+      robot.moveMouseSmooth(0, 1, 2, 3);
+    }).toThrowError(/Invalid number/);
+
+    expect(function()
+    {
+      robot.moveMouseSmooth(0);
+    }).toThrowError(/Invalid number/);
+
+    expect(robot.moveMouseSmooth("0", "0") === 1).toBeTruthy();
 
   });
 
