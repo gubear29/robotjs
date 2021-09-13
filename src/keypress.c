@@ -141,7 +141,7 @@ void toggleKeyCode(MMKeyCode code, const bool down, MMKeyFlags flags)
 	}
 #elif defined(IS_WINDOWS)
 	const DWORD dwFlags = down ? 0 : KEYEVENTF_KEYUP;
-	WIN32_KEY_EVENT_WAIT(code, dwFlags)
+	WIN32_KEY_EVENT_WAIT(code, dwFlags);
 
 	// if (down) {
 	// 	/* Parse modifier keys. */
